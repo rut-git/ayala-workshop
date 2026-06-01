@@ -102,6 +102,22 @@
             transform: scale(1.03);
         }
 
+        /* עיצוב ייחודי עבור כרטיסי תמונות עם טקסט (רק עבור גלריית "all") */
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .image-title {
+            margin-top: 12px;
+            font-size: 1rem;
+            color: #5c5044;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
         /* LIGHTBOX */
         .lightbox {
             position: fixed;
@@ -210,8 +226,8 @@
     <button data-family="rizman2">משפחת רייזמן גילה</button>
     <button data-family="shimon">משפחת שמעון רחובות</button>
     <button data-family="landesman">משפחת לנדסמן</button>
-    <button data-family="synagogue"> בית מדרש ירושלים</button>
-    <button data-family="m"> משפחת מ ירושלים</button>
+    <button data-family="all">הצצה לפרויקטים נבחרים בשלבי תכנון, הדמיות וביצוע</button>
+    <button data-family="m">משפחת מ ירושלים</button>
 </div>
 
 <div class="selected-family" id="selected-family"></div>
@@ -230,7 +246,21 @@
 <div class="family-gallery" id="rizman2"><img src="risman/a.png"><img src="risman/b.png"><img src="risman/c.png"></div>
 <div class="family-gallery" id="shimon"><img src="sui/a.png"><img src="sui/b.png"><img src="sui/c.png"><iframe src="sui/d.pdf"></iframe></div>
 <div class="family-gallery" id="landesman"><img src="landesman/aa.png"><img src="landesman/bb.png"><img src="landesman/cc.png"></div>
-<div class="family-gallery" id="synagogue"><img src="synagogue/3.png"><img src="synagogue/4.png"></div>
+
+<!-- הגלריה המבוקשת - הוספנו כאן שמות מתחת לתמונות -->
+<div class="family-gallery" id="all">
+    <div class="gallery-item">
+        <img src="synagogue/3.png">
+        <div class="image-title">   בית מדרש ירושלים  </div>
+    </div>
+    <div class="gallery-item">
+        <img src="synagogue/4.png">
+        <div class="image-title"> בית מדרש ירושלים  </div>
+    </div>
+    <!-- את יכולה להוסיף כאן עוד תמונות באותו מבנה בדיוק -->
+</div>
+
+<div class="family-gallery" id="m"><img src="m/a.JPG"><img src="m/b.JPG"></div>
 
 
 <div class="lightbox" id="lightbox">
@@ -272,6 +302,7 @@
                 g.style.display = (g.id === familyId) ? "grid" : "none";
             });
 
+            // עדכון הבחירה כך שימצא גם תמונות חופשיות וגם תמונות בתוך קופסאות
             currentItems = Array.from(document.querySelectorAll(`#${familyId} img, #${familyId} iframe`));
             
             currentItems.forEach((item, index) => {
@@ -314,7 +345,6 @@
         if (e.target === lightbox) closeLightbox();
     });
 
-    // תיקון מקלדת: חץ ימינה מקדם, חץ שמאלה מחזיר
     document.addEventListener("keydown", e => {
         if (lightbox.style.display === "flex") {
             if (e.key === "ArrowRight") changeItem(1);
