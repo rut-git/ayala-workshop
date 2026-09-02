@@ -13,111 +13,168 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             background: linear-gradient(135deg, #f3eee8, #fbf8f4, #efe8df);
             color: #3e352c;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            flex-direction: column;
         }
 
-        .cover {
+        /* כותרת עליונה */
+        .top-header {
             text-align: center;
-            max-width: 600px;
+            padding: 40px 20px 30px;
         }
 
-        .cover .subtitle {
+        .top-header .subtitle {
             display: block;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 6px;
             color: #9a8d80;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
-        .cover h1 {
-            font-size: 3rem;
+        .top-header h1 {
+            font-size: 2.6rem;
             font-weight: 300;
-            letter-spacing: 4px;
-            margin-bottom: 18px;
+            letter-spacing: 3px;
         }
 
-        .role {
-            font-size: 1.3rem;
+        .top-header h1 .role {
             font-weight: 300;
             color: #5c5044;
-            letter-spacing: 1px;
-            margin-bottom: 50px;
         }
 
-        .projects-btn {
-            display: inline-block;
-            padding: 16px 55px;
-            border: none;
-            border-radius: 40px;
-            background: #cbbba8;
-            color: white;
-            font-size: 1.15rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            margin-bottom: 55px;
+        /* חלוקה לשניים */
+        .split {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
         }
 
-        .projects-btn:hover {
-            background: #b8a58f;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        .split > div {
+            flex: 1 1 50%;
+            min-width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .contact {
-            font-size: 1rem;
-            color: #5c5044;
-            letter-spacing: 0.5px;
+        /* צד ימין - פרטי קשר */
+        .contact-side {
+            padding: 40px;
+        }
+
+        .contact-box {
+            text-align: center;
         }
 
         .contact-title {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             letter-spacing: 3px;
             color: #9a8d80;
-            margin-bottom: 14px;
+            margin-bottom: 22px;
         }
 
-        .contact a {
+        .contact-box div,
+        .contact-box a {
+            font-size: 1.15rem;
             color: #5c5044;
             text-decoration: none;
             display: block;
-            margin: 6px 0;
-            transition: color 0.3s ease;
+            margin: 10px 0;
+            letter-spacing: 0.5px;
         }
 
-        .contact a:hover {
+        .contact-box a:hover {
             color: #b8a58f;
             text-decoration: underline;
         }
 
-        @media (max-width: 480px) {
-            .cover h1 { font-size: 2.2rem; }
-            .role { font-size: 1.05rem; }
+        /* צד שמאל - תמונה */
+        .image-side {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+        }
+
+        .image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-side::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0));
+        }
+
+        .projects-btn {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: inline-block;
+            padding: 16px 45px;
+            border: none;
+            border-radius: 40px;
+            background: #cbbba8;
+            color: white;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            white-space: nowrap;
+        }
+
+        .projects-btn:hover {
+            background: #b8a58f;
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        /* מובייל - עמודה אחת, תמונה למעלה */
+        @media (max-width: 768px) {
+            .split {
+                flex-direction: column-reverse;
+            }
+            .top-header h1 { font-size: 2rem; }
+            .image-side { min-height: 320px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="cover">
+    <div class="top-header">
         <span class="subtitle">תיקיית עבודות</span>
-        <h1>אילה דורלכר</h1>
-        <div class="role">תכנון ועיצוב פנים</div>
+        <h1>אילה דורלכר <span class="role">— תכנון ועיצוב</span></h1>
+    </div>
 
-        <a class="projects-btn" href="projects.html">פרויקטים</a>
+    <div class="split">
 
-        <div class="contact">
-            <div class="contact-title">פרטי קשר</div>
-            <div>050-4171241</div>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=4171241a@gmail.com" target="_blank" rel="noopener">4171241a@gmail.com</a>
+        <div class="contact-side">
+            <div class="contact-box">
+                <div class="contact-title">פרטי קשר</div>
+                <div>050-4171241</div>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=4171241a@gmail.com" target="_blank" rel="noopener">4171241a@gmail.com</a>
+            </div>
         </div>
+
+        <div class="image-side">
+            <img src="all/3.png" alt="הדמיה">
+            <a class="projects-btn" href="projects.html">לעוד פרויקטים והדמיות</a>
+        </div>
+
     </div>
 
 </body>
