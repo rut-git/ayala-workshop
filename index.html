@@ -31,23 +31,10 @@
             padding: 40px 20px 30px;
         }
 
-        .top-header .subtitle {
-            display: block;
+        .top-header span {
             font-size: 1rem;
             letter-spacing: 6px;
             color: #9a8d80;
-            margin-bottom: 12px;
-        }
-
-        .top-header h1 {
-            font-size: 2.6rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-        }
-
-        .top-header h1 .role {
-            font-weight: 300;
-            color: #5c5044;
         }
 
         /* חלוקה לשניים */
@@ -65,7 +52,7 @@
             justify-content: center;
         }
 
-        /* צד ימין - פרטי קשר */
+        /* צד ימין - שם ופרטי קשר */
         .contact-side {
             padding: 40px;
         }
@@ -74,20 +61,27 @@
             text-align: center;
         }
 
-        .contact-title {
-            font-size: 0.9rem;
+        .contact-box h1 {
+            font-size: 2.6rem;
+            font-weight: 300;
             letter-spacing: 3px;
-            color: #9a8d80;
-            margin-bottom: 22px;
+            margin-bottom: 8px;
+        }
+
+        .contact-box .role {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #5c5044;
+            margin-bottom: 35px;
         }
 
         .contact-box div,
         .contact-box a {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: #5c5044;
             text-decoration: none;
             display: block;
-            margin: 10px 0;
+            margin: 8px 0;
             letter-spacing: 0.5px;
         }
 
@@ -98,80 +92,69 @@
 
         /* צד שמאל - תמונה */
         .image-side {
-            position: relative;
-            min-height: 420px;
-            overflow: hidden;
+            flex-direction: column;
+            gap: 25px;
+            padding: 40px;
         }
 
         .image-side img {
             width: 100%;
-            height: 100%;
+            max-width: 340px;
+            aspect-ratio: 4 / 5;
             object-fit: cover;
-            display: block;
-        }
-
-        .image-side::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0));
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .projects-btn {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
             display: inline-block;
-            padding: 16px 45px;
+            padding: 14px 40px;
             border: none;
             border-radius: 40px;
             background: #cbbba8;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             white-space: nowrap;
         }
 
         .projects-btn:hover {
             background: #b8a58f;
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
 
-        /* מובייל - עמודה אחת, תמונה למעלה */
+        /* מובייל - עמודה אחת */
         @media (max-width: 768px) {
             .split {
                 flex-direction: column-reverse;
             }
-            .top-header h1 { font-size: 2rem; }
-            .image-side { min-height: 320px; }
+            .contact-box h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="top-header">
-        <span class="subtitle">תיקיית עבודות</span>
-        <h1>אילה דורלכר <span class="role">— תכנון ועיצוב</span></h1>
+        <span>תיקיית עבודות</span>
     </div>
 
     <div class="split">
 
         <div class="contact-side">
             <div class="contact-box">
-                <div class="contact-title">פרטי קשר</div>
+                <h1>אילה דורלכר</h1>
+                <div class="role">תכנון ועיצוב</div>
                 <div>050-4171241</div>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=4171241a@gmail.com" target="_blank" rel="noopener">4171241a@gmail.com</a>
             </div>
         </div>
 
         <div class="image-side">
-            <img src="all/3.png" alt="הדמיה">
+            <img src="mez/20240909_134059.jpg" alt="הדמיה">
             <a class="projects-btn" href="projects.html">לעוד פרויקטים והדמיות</a>
         </div>
 
